@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+body{
+    font-family: 'Oswald',sans-serif;
+    background-color: black;
+    color:white;
+    margin: 0px;
+}
+a:hover {
+    color:gray;
+  }
+header .mobile {
+    display: none;
+}
+section.PC-Specs-Pagename {
+    color: wheat;
+}
+h2 {
+    font-size: 40px;
+    margin-left: 20px;
+}
+section.Case {
+    color: green;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+section.Motherboard {
+    color: yellow;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+section.CPU {
+    color: bisque;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+section.GPU {
+    color: burlywood;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+section.RAM {
+    color: darkcyan;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+section.PSU {
+    color: lightskyblue;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+section.SSD {
+    color: darkgoldenrod;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+section.HDD {
+    color: lightcoral;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+section.cooler-master {
+    color: tomato;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+section.arctic {
+    color: purple;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+section.deepcool {
+    color: indigo;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+div {
+    display: inline-block;
+    margin: auto;
+    width: 100px;
+}
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    background-color: darkgrey;
+}
+li {
+    font-size: 2vw;
+    display:inline-block;
+    background-color: darkgray;
+    border-radius: 3px;
+    padding: 10px;
+    margin-right: 5px;   
+}
+a {
+    color: inherit;
+    color: black;
+    text-decoration:none;
+}
+@media screen and (max-width: 715px) {
+    header .mobile {
+        display: inline-block;
+    }
+    h1  {
+     font-size: 10vw;
+    }
+    header .desktop {
+        display: none;
+    }
+    li {
+     font-size: 4vw;
+     margin-bottom: 4px;
+     }
+     a {
+         font-size: 4vw;
+     }
+ }
+ @media screen and (max-width: 715px) {
+   h1  {
+       font-size: 10vw;
+   }
+   li {
+       font-size: 4vw;
+       margin-bottom: 4px;
+   }
+   a {
+    font-size: 4vw;
+}
+h1  {
+    font-size: 10vw;
+   }
+ }
