@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<head>
+    <script>
+        function onSubmit(token) {
+          document.getElementById("demo-form").submit();
+        }
+      </script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://kit.fontawesome.com/b76492f1b3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Urek's Website</title>
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16"/>
+</head>
+
+<body>  
+
+    
+            <h1 class="text">Urek's Website</h1>
+
+            
+            <header>
+                <nav>
+                    <ul>
+                        
+
+                        <a class="buttons" href="aboutme.html"><i class="fas fa-user-alt fa-3x"></i>
+                
+                        <a class="buttons" href="computerspecs.html"><i class="fas fa-desktop fa-3x"></i>
+
+                        <a class="buttons" href="https://github.com/Urek00Bg"><i class="fab fa-github-square fa-3x"></i>
+
+                        <a class="buttons" href="https://steamcommunity.com/profiles/76561198347294829/"><i class="fab fa-steam fa-3x"></i>
+
+                        <a class="buttons" href="https://discord.gg/wV7pcs2dA4" target="_blank" ><i class="fab fa-discord fa-3x"></i>
+                                             
+                        <a class="buttons" href="https://www.twitch.tv/urek00bg4"><i class="fab fa-twitch fa-3x"></i>
+                
+                        <a class="buttons" href="https://streamlabs.com/urek00bg4/tip"><i class="fas fa-donate fa-3x"></i>
+                
+                        <li class="mobile"><a href="aboutme.html"> About me
+                        <li class="mobile"><a href="https://github.com/Urek00Bg">GitHub
+                        <li class="mobile"><a href="computerspecs.html">Computer specs
+                        <li class="mobile"><a href="https://steamcommunity.com/profiles/76561198347294829/">Steam
+                        <li class="mobile"><a href="https://www.twitch.tv/urek00bg4">Twitch
+                        <li class="mobile"><a href="https://streamlabs.com/urek00bg4/tip">Donate
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <style>
+                #snowflakeContainer {
+                  position: absolute;
+                  left: 0px;
+                  top: 0px;
+                  display: none;
+                }
+              
+                .snowflake {
+                  position: fixed;
+                  background-color: #CCC;
+                  user-select: none;
+                  z-index: 1000;
+                  pointer-events: none;
+                  border-radius: 50%;
+                  width: 10px;
+                  height: 10px;
+                }
+              </style>
+              
+              <div id="snowflakeContainer">
+                <span class="snowflake"></span>
+              </div>
+              
+              <script>
+                // Array to store our Snowflake objects
+                var snowflakes = [];
+              
+                // Global variables to store our browser's window size
+                var browserWidth;
+                var browserHeight;
+              
+                // Specify the number of snowflakes you want visible
+                var numberOfSnowflakes = 50;
+              
+                // Flag to reset the position of the snowflakes
+                var resetPosition = false;
+              
+                // Handle accessibility
+                var enableAnimations = false;
+                var reduceMotionQuery = matchMedia("(prefers-reduced-motion)");
+              
+                // Handle animation accessibility preferences 
+                function setAccessibilityState() {
+                  if (reduceMotionQuery.matches) {
+                    enableAnimations = false;
+                  } else { 
+                    enableAnimations = true;
+                  }
+                }
+                setAccessibilityState();
+              
+                reduceMotionQuery.addListener(setAccessibilityState);
+              
+                //
+                // It all starts here...
+                //
+                function setup() {
+                  if (enableAnimations) {
+                    window.addEventListener("DOMContentLoaded", generateSnowflakes, false);
+                    window.addEventListener("resize", setResetFlag, false);
+                  }
+                }
+                setup();
+              
+                //
+                // Constructor for our Snowflake object
+                //
+                function Snowflake(element, speed, xPos, yPos) {
+                  // set initial snowflake properties
+                  this.element = element;
+                  this.speed = speed;
+                  this.xPos = xPos;
+                  this.yPos = yPos;
+                  this.scale = 1;
+              
+                  // declare variables used for snowflake's motion
+                  this.counter = 0;
+                  this.sign = Math.random() < 0.5 ? 1 : -1;
+              
+                  // setting an initial opacity and size for our snowflake
+                  this.element.style.opacity = (.1 + Math.random()) / 3;
+                }
+              
+                //
+                // The function responsible for actually moving our snowflake
+                //
+                Snowflake.prototype.update = function () {
+                  // using some trigonometry to determine our x and y position
+                  this.counter += this.speed / 5000;
+                  this.xPos += this.sign * this.speed * Math.cos(this.counter) / 40;
+                  this.yPos += Math.sin(this.counter) / 40 + this.speed / 30;
+                  this.scale = .5 + Math.abs(10 * Math.cos(this.counter) / 20);
+              
+                  // setting our snowflake's position
+                  setTransform(Math.round(this.xPos), Math.round(this.yPos), this.scale, this.element);
+              
+                  // if snowflake goes below the browser window, move it back to the top
+                  if (this.yPos > browserHeight) {
+                    this.yPos = -50;
+                  }
+                }
+              
+                //
+                // A performant way to set your snowflake's position and size
+                //
+                function setTransform(xPos, yPos, scale, el) {
+                  el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0) scale(${scale}, ${scale})`;
+                }
+              
+                //
+                // The function responsible for creating the snowflake
+                //
+                function generateSnowflakes() {
+              
+                  // get our snowflake element from the DOM and store it
+                  var originalSnowflake = document.querySelector(".snowflake");
+              
+                  // access our snowflake element's parent container
+                  var snowflakeContainer = originalSnowflake.parentNode;
+                  snowflakeContainer.style.display = "block";
+              
+                  // get our browser's size
+                  browserWidth = document.documentElement.clientWidth;
+                  browserHeight = document.documentElement.clientHeight;
+              
+                  // create each individual snowflake
+                  for (var i = 0; i < numberOfSnowflakes; i++) {
+              
+                    // clone our original snowflake and add it to snowflakeContainer
+                    var snowflakeClone = originalSnowflake.cloneNode(true);
+                    snowflakeContainer.appendChild(snowflakeClone);
+              
+                    // set our snowflake's initial position and related properties
+                    var initialXPos = getPosition(50, browserWidth);
+                    var initialYPos = getPosition(50, browserHeight);
+                    var speed = 5 + Math.random() * 40;
+              
+                    // create our Snowflake object
+                    var snowflakeObject = new Snowflake(snowflakeClone,
+                      speed,
+                      initialXPos,
+                      initialYPos);
+                    snowflakes.push(snowflakeObject);
+                  }
+              
+                  // remove the original snowflake because we no longer need it visible
+                  snowflakeContainer.removeChild(originalSnowflake);
+              
+                  moveSnowflakes();
+                }
+              
+                //
+                // Responsible for moving each snowflake by calling its update function
+                //
+                function moveSnowflakes() {
+              
+                  if (enableAnimations) {
+                    for (var i = 0; i < snowflakes.length; i++) {
+                      var snowflake = snowflakes[i];
+                      snowflake.update();
+                    }      
+                  }
+              
+                  // Reset the position of all the snowflakes to a new value
+                  if (resetPosition) {
+                    browserWidth = document.documentElement.clientWidth;
+                    browserHeight = document.documentElement.clientHeight;
+              
+                    for (var i = 0; i < snowflakes.length; i++) {
+                      var snowflake = snowflakes[i];
+              
+                      snowflake.xPos = getPosition(50, browserWidth);
+                      snowflake.yPos = getPosition(50, browserHeight);
+                    }
+              
+                    resetPosition = false;
+                  }
+              
+                  requestAnimationFrame(moveSnowflakes);
+                }
+              
+                //
+                // This function returns a number between (maximum - offset) and (maximum + offset)
+                //
+                function getPosition(offset, size) {
+                  return Math.round(-1 * offset + Math.random() * (size + 2 * offset));
+                }
+              
+                //
+                // Trigger a reset of all the snowflakes' positions
+                //
+                function setResetFlag(e) {
+                  resetPosition = true;
+                }
+              </script>
+</body>
+</html>
