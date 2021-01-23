@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+}
+h1 {
+    color: white;
+    text-align: center;
+    margin-top: 0px;
+    font-size: 3vw;
+}
+h2 {
+    display: inline;
+    margin-top: 60px;
+    margin-left: 400px;
+}
+.status {
+    color: white;
+    text-align: center;
+    
+}
+.connect {
+    color: white;
+    text-align: left;
+    
+}
+iframe {
+    display: inline;
+    margin-top: 40px;
+    margin-left: 400px;
+}
+
