@@ -16,16 +16,85 @@ body{
     width: 10px;
     height: 10px;
 }
-h1.text {
-    font-size: 90px;
-    color:white;
-}
-
-h1 {
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+  }
+  body{
+    background: #000;
+  }
+  .container{
     text-align: center;
-    margin-top: 340px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+  }
+  .container span{
+    text-transform: uppercase;
     display: block;
+  }
+  .text1{
+    color: white;
+    font-size: 70px;
+    font-weight: 700;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+    background: black;
+    position: relative;
+    animation: text 3s 1;
+  }
+  .text2{
+    font-size: 35px;
+    font-weight: 600;
+    color: #6ab04c;
+    margin-bottom: 30px;
+  }
+  .buttons {
+    color:#7A0021;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    background: black;
+    position: relative;
+    animation: text 5s 1;
+    display:inline;
+  }
+  a {
+    color:white;
+    text-decoration: none;
+ }
+  
+ @keyframes slide {
+  0%{
+    background-position-x: 0%;
+  }
+  100%{
+    background-position-x: 600vw;
+  }
 }
+ 
+
+  @keyframes text {
+    0%{
+      color: black;
+      margin-bottom: -40px;
+    }
+    30%{
+      letter-spacing: 25px;
+      margin-bottom: -40px;
+    }
+    85%{
+      letter-spacing: 8px;
+      margin-bottom: -40px;
+    }
+  }
+  
+  
+
+
 
 ul {
     margin-left: 0;
@@ -42,12 +111,6 @@ li {
     margin-top:-60px;
     margin-left: 0px ;
 }
-
-a {
-    color: black;
-    color:white;
-    text-decoration: none;
- }
  nav {
     margin-left: 0px;
  }
@@ -55,12 +118,6 @@ a {
      margin-bottom: 0;
  }
 
- a.buttons {
-    margin-right: 10px;
-    margin-left: 10px;
-    display: inline-block;
-    margin-bottom: 0px;
-}
 a.buttons:hover{
     color: gray;
 }
